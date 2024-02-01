@@ -32,7 +32,7 @@ def parse_string(userInput):
     if(userInput):
         userInput = userInput.strip()
         keywords = ['state', 'median age', 'obesity rate', 'cow-human ratio', 'life expectancy', 'ski resort']
-        symbols = [' > ', ' < ', ' == ', 'of']
+        symbols = [' > ', ' < ', ' == ', ' of ']
         valid = False
         tokenizedQuery = userInput.split(' and ')
         for query in tokenizedQuery:
@@ -43,7 +43,7 @@ def parse_string(userInput):
                             print('valid so far')
 
 def main():
-    string = "median age == 5 and state == Alabama and obesity rate > 5 and median age of Texas"
+    string = "median age == 5 and state == Alabama and obesity rate > 5 and obesity rate of Texas"
     parse_string(string)
 
 main()
