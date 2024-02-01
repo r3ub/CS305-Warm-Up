@@ -1,3 +1,18 @@
+import re
+
+import json
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+# Firebase Connection Setup
+cred = credentials.Certificate("firebase-adminsdk-key.json")
+app = firebase_admin.initialize_app(cred)
+store = firestore.client()
+
+# Firebase Collection Setup (Scraps all old data under 'state-data')
+doc_ref = store.collection(u'state-data')
+store.recursive_delete(doc_ref)
+
 #Query Language:
 # INPUT                     RETURN  
 # state == X                all stats for state X
@@ -12,16 +27,12 @@
 # ski resort X              T/F if a ski resort exists in state X. If true, number of ski resorts
 # functionality for and
 
-import re
-
-input_string = "Alabama"
-
 #note: trim whitespace before/after query
 def parse_string(userInput):
     if(userInput):
         userInput = userInput.strip()
         keywords = ['state', 'median age', 'obesity rate', 'cow-human ratio', 'life expectancy', 'ski resort']
-        symbols = [' > ', ' < ', ' == ']
+        symbols = [' > ', ' < ', ' == ', 'of']
         valid = False
         tokenizedQuery = userInput.split(' and ')
         for query in tokenizedQuery:
@@ -32,12 +43,10 @@ def parse_string(userInput):
                             print('valid so far')
 
 def main():
-    string = "median age == 5 and state == Alabama and obesity rate > 5"
+    string = "median age == 5 and state == Alabama and obesity rate > 5 and median age of Texas"
     parse_string(string)
 
 main()
-
-
 
     
 
