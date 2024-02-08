@@ -45,7 +45,8 @@ def do_query(item, symbol, value):
     return return_list
 
 def main():
-    parse_string("state == alabama")
+    string = input('??')
+    parse_string(string)
 
 main()
 
