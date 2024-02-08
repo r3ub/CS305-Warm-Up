@@ -30,11 +30,16 @@ store.recursive_delete(doc_ref)
 #note: trim whitespace before/after query
 def parse_string(userInput):
     if(userInput):
+        #trim trailing/leading whitespace
         userInput = userInput.strip()
+        #keywords for the start of the query
         keywords = ['state', 'median age', 'obesity rate', 'cow-human ratio', 'life expectancy', 'ski resort']
+        #valid query symbols
         symbols = [' > ', ' < ', ' == ', ' of ']
         valid = False
+        #split on conjunction
         tokenizedQuery = userInput.split(' and ')
+        #loops through each 
         for query in tokenizedQuery:
             for keyword in keywords:
                 if(query.startswith(keyword)):
