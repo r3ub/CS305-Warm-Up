@@ -3,14 +3,14 @@
     "state": "Alabama",
     "median_age": 39.6,
     "obesity_rate": 38.3,
-    "cow-human_ratio": 0.25,
+    "cow_human_ratio": 0.25,
     "life_expectancy": 75.5
   },
   {
     "state": "Alaska",
     "median_age": 35.9,
     "obesity_rate": 32.1,
-    "cow-human_ratio": 0.02,
+    "cow_human_ratio": 0.02,
     "life_expectancy": 78.2,
     "ski_resort": 10
   },
@@ -18,7 +18,7 @@
     "state": "Arizona",
     "median_age": 38.8,
     "obesity_rate": 33.2,
-    "cow-human_ratio": 0.13,
+    "cow_human_ratio": 0.13,
     "life_expectancy": 79.3,
     "ski_resort": 3
   },
@@ -26,14 +26,14 @@
     "state": "Arkansas",
     "median_age": 38.9,
     "obesity_rate": 37.4,
-    "cow-human_ratio": 0.54,
+    "cow_human_ratio": 0.54,
     "life_expectancy": 75.9
   },
   {
     "state": "California",
     "median_age": 37.9,
     "obesity_rate": 28.1,
-    "cow-human_ratio": 0.13,
+    "cow_human_ratio": 0.13,
     "life_expectancy": 81.2,
     "ski_resort": 26
   },
@@ -41,7 +41,7 @@
     "state": "Colorado",
     "median_age": 37.7,
     "obesity_rate": 25.0,
-    "cow-human_ratio": 0.45,
+    "cow_human_ratio": 0.45,
     "life_expectancy": 80.2,
     "ski_resort": 32
   },
@@ -49,7 +49,7 @@
     "state": "Connecticut",
     "median_age": 40.9,
     "obesity_rate": 30.6,
-    "cow-human_ratio": 0.01,
+    "cow_human_ratio": 0.01,
     "life_expectancy": 80.6,
     "ski_resort": 5
   },
@@ -57,35 +57,35 @@
     "state": "Delaware",
     "median_age": 41.5,
     "obesity_rate": 37.9,
-    "cow-human_ratio": 0.01,
+    "cow_human_ratio": 0.01,
     "life_expectancy": 78.4
   },
   {
     "state": "Florida",
     "median_age": 42.7,
     "obesity_rate": 31.6,
-    "cow-human_ratio": 0.08,
+    "cow_human_ratio": 0.08,
     "life_expectancy": 79.6
   },
   {
     "state": "Georgia",
     "median_age": 37.6,
     "obesity_rate": 37.0,
-    "cow-human_ratio": 0.10,
+    "cow_human_ratio": 0.10,
     "life_expectancy": 77.7
   },
   {
     "state": "Hawaii",
     "median_age": 40.8,
     "obesity_rate": 25.9,
-    "cow-human_ratio": 0.10,
+    "cow_human_ratio": 0.10,
     "life_expectancy": 81.6
   },
   {
     "state": "Idaho",
     "median_age": 37.5,
     "obesity_rate": 33.2,
-    "cow-human_ratio": 1.36,
+    "cow_human_ratio": 1.36,
     "life_expectancy": 79.6,
     "ski_resort": 18
   },
@@ -93,7 +93,7 @@
     "state": "Illinois",
     "median_age": 39.1,
     "obesity_rate": 33.4,
-    "cow-human_ratio": 0.08,
+    "cow_human_ratio": 0.08,
     "life_expectancy": 79.3,
     "ski_resort": 4
   },
@@ -101,7 +101,7 @@
     "state": "Indiana",
     "median_age": 38.2,
     "obesity_rate": 37.7,
-    "cow-human_ratio": 0.12,
+    "cow_human_ratio": 0.12,
     "life_expectancy": 77.1,
     "ski_resort": 2
   },
@@ -109,7 +109,7 @@
     "state": "Iowa",
     "median_age": 38.9,
     "obesity_rate": 37.4,
-    "cow-human_ratio": 1.14,
+    "cow_human_ratio": 1.14,
     "life_expectancy": 79.1,
     "ski_resort": 3
   },
@@ -117,28 +117,28 @@
     "state": "Kansas",
     "median_age": 37.6,
     "obesity_rate": 35.7,
-    "cow-human_ratio": 2.13,
+    "cow_human_ratio": 2.13,
     "life_expectancy": 78.3
   },
   {
     "state": "Kentucky",
     "median_age": 39.4,
     "obesity_rate": 37.7,
-    "cow-human_ratio": 0.43,
+    "cow_human_ratio": 0.43,
     "life_expectancy": 75.6
   },
   {
     "state": "Louisiana",
     "median_age": 38.2,
     "obesity_rate": 40.1,
-    "cow-human_ratio": 0.16,
+    "cow_human_ratio": 0.16,
     "life_expectancy": 76.0
   },
   {
     "state": "Maine",
     "median_age": 45.1,
     "obesity_rate": 33.1,
-    "cow-human_ratio": 0.06,
+    "cow_human_ratio": 0.06,
     "life_expectancy": 78.4,
     "ski_resort": 18
   },
@@ -146,7 +146,7 @@
     "state": "Maryland",
     "median_age": 39.7,
     "obesity_rate": 33.2,
-    "cow-human_ratio": 0.03,
+    "cow_human_ratio": 0.03,
     "life_expectancy": 79.0,
     "ski_resort": 1
   },
@@ -154,7 +154,7 @@
     "state": "Massachusetts",
     "median_age": 40.3,
     "obesity_rate": 27.2,
-    "cow-human_ratio": 0.00,
+    "cow_human_ratio": 0.00,
     "life_expectancy": 80.7,
     "ski_resort": 12
   },
@@ -162,7 +162,7 @@
     "state": "Michigan",
     "median_age": 40.3,
     "obesity_rate": 34.5,
-    "cow-human_ratio": 0.11,
+    "cow_human_ratio": 0.11,
     "life_expectancy": 78.1,
     "ski_resort": 39
   },
@@ -170,7 +170,7 @@
     "state": "Minnesota",
     "median_age": 39.0,
     "obesity_rate": 33.6,
-    "cow-human_ratio": 0.38,
+    "cow_human_ratio": 0.38,
     "life_expectancy": 80.6,
     "ski_resort": 20
   },
@@ -178,14 +178,14 @@
     "state": "Mississippi",
     "median_age": 38.9,
     "obesity_rate": 39.5,
-    "cow-human_ratio": 0.29,
+    "cow_human_ratio": 0.29,
     "life_expectancy": 74.5
   },
   {
     "state": "Missouri",
     "median_age": 39.1,
     "obesity_rate": 36.4,
-    "cow-human_ratio": 0.67,
+    "cow_human_ratio": 0.67,
     "life_expectancy": 77.2,
     "ski_resort": 2
   },
@@ -193,7 +193,7 @@
     "state": "Montana",
     "median_age": 40.2,
     "obesity_rate": 30.5,
-    "cow-human_ratio": 1.99,
+    "cow_human_ratio": 1.99,
     "life_expectancy": 78.6,
     "ski_resort": 16
   },
@@ -201,14 +201,14 @@
     "state": "Nebraska",
     "median_age": 37.4,
     "obesity_rate": 35.3,
-    "cow-human_ratio": 3.31,
+    "cow_human_ratio": 3.31,
     "life_expectancy": 79.4
   },
   {
     "state": "Nevada",
     "median_age": 39,
     "obesity_rate": 33.5,
-    "cow-human_ratio": 0.14,
+    "cow_human_ratio": 0.14,
     "life_expectancy": 78.3,
     "ski_resort": 5
   },
@@ -216,7 +216,7 @@
     "state": "New Hampshire",
     "median_age": 43.3,
     "obesity_rate": 30.2,
-    "cow-human_ratio": 0.02,
+    "cow_human_ratio": 0.02,
     "life_expectancy": 79.6,
     "ski_resort": 26
   },
@@ -224,7 +224,7 @@
     "state": "New Jersey",
     "median_age": 40.4,
     "obesity_rate": 29.1,
-    "cow-human_ratio": 0.00,
+    "cow_human_ratio": 0.00,
     "life_expectancy": 80.5,
     "ski_resort": 3
   },
@@ -232,7 +232,7 @@
     "state": "New Mexico",
     "median_age": 39.4,
     "obesity_rate": 32.4,
-    "cow-human_ratio": 0.62,
+    "cow_human_ratio": 0.62,
     "life_expectancy": 77.2,
     "ski_resort": 8
   },
@@ -240,7 +240,7 @@
     "state": "New York",
     "median_age": 40,
     "obesity_rate": 30.1,
-    "cow-human_ratio": 0.07,
+    "cow_human_ratio": 0.07,
     "life_expectancy": 81.2,
     "ski_resort": 52
   },
@@ -248,7 +248,7 @@
     "state": "North Carolina",
     "median_age": 39.2,
     "obesity_rate": 34.1,
-    "cow-human_ratio": 0.07,
+    "cow_human_ratio": 0.07,
     "life_expectancy": 77.8,
     "ski_resort": 6
   },
@@ -256,7 +256,7 @@
     "state": "North Dakota",
     "median_age": 36.2,
     "obesity_rate": 35.4,
-    "cow-human_ratio": 2.24,
+    "cow_human_ratio": 2.24,
     "life_expectancy": 79.2,
     "ski_resort": 3
   },
@@ -264,7 +264,7 @@
     "state": "Ohio",
     "median_age": 39.9,
     "obesity_rate": 38.1,
-    "cow-human_ratio": 0.11,
+    "cow_human_ratio": 0.11,
     "life_expectancy": 77.0,
     "ski_resort": 5
   },
@@ -272,14 +272,14 @@
     "state": "Oklahoma",
     "median_age": 37.1,
     "obesity_rate": 40.0,
-    "cow-human_ratio": 1.16,
+    "cow_human_ratio": 1.16,
     "life_expectancy": 75.9
   },
   {
     "state": "Oregon",
     "median_age": 40.5,
     "obesity_rate": 30.9,
-    "cow-human_ratio": 0.29,
+    "cow_human_ratio": 0.29,
     "life_expectancy": 79.6,
     "ski_resort": 11
   },
@@ -287,7 +287,7 @@
     "state": "Pennsylvania",
     "median_age": 40.9,
     "obesity_rate": 33.4,
-    "cow-human_ratio": 0.11,
+    "cow_human_ratio": 0.11,
     "life_expectancy": 78.5,
     "ski_resort": 26
   },
@@ -295,7 +295,7 @@
     "state": "Rhode Island",
     "median_age": 40.7,
     "obesity_rate": 30.8,
-    "cow-human_ratio": 0.00,
+    "cow_human_ratio": 0.00,
     "life_expectancy": 79.8,
     "ski_resort": 1
   },
@@ -303,14 +303,14 @@
     "state": "South Carolina",
     "median_age": 40.5,
     "obesity_rate": 35.0,
-    "cow-human_ratio": 0.06,
+    "cow_human_ratio": 0.06,
     "life_expectancy": 76.9
   },
   {
     "state": "South Dakota",
     "median_age": 38.5,
     "obesity_rate": 36.8,
-    "cow-human_ratio": 4.00,
+    "cow_human_ratio": 4.00,
     "life_expectancy": 78.5,
     "ski_resort": 2
   },
@@ -318,7 +318,7 @@
     "state": "Tennessee",
     "median_age": 39.2,
     "obesity_rate": 38.9,
-    "cow-human_ratio": 0.24,
+    "cow_human_ratio": 0.24,
     "life_expectancy": 75.8,
     "ski_resort": 1
   },
@@ -326,14 +326,14 @@
     "state": "Texas",
     "median_age": 35.6,
     "obesity_rate": 35.5,
-    "cow-human_ratio": 0.43,
+    "cow_human_ratio": 0.43,
     "life_expectancy": 78.8
   },
   {
     "state": "Utah",
     "median_age": 32.1,
     "obesity_rate": 31.1,
-    "cow-human_ratio": 0.23,
+    "cow_human_ratio": 0.23,
     "life_expectancy": 79.9,
     "ski_resort": 15
   },
@@ -341,7 +341,7 @@
     "state": "Vermont",
     "median_age": 43.2,
     "obesity_rate": 26.8,
-    "cow-human_ratio": 0.38,
+    "cow_human_ratio": 0.38,
     "life_expectancy": 79.9,
     "ski_resort": 26
   },
@@ -349,7 +349,7 @@
     "state": "Virginia",
     "median_age": 39.0,
     "obesity_rate": 35.2,
-    "cow-human_ratio": 0.15,
+    "cow_human_ratio": 0.15,
     "life_expectancy": 79.3,
     "ski_resort": 5
   },
@@ -357,7 +357,7 @@
     "state": "Washington",
     "median_age": 38.4,
     "obesity_rate": 31.7,
-    "cow-human_ratio": 0.15,
+    "cow_human_ratio": 0.15,
     "life_expectancy": 80.2,
     "ski_resort": 15
   },
@@ -365,7 +365,7 @@
     "state": "West Virginia",
     "median_age": 42.9,
     "obesity_rate": 41.0,
-    "cow-human_ratio": 0.21,
+    "cow_human_ratio": 0.21,
     "life_expectancy": 74.7,
     "ski_resort": 5
   },
@@ -373,7 +373,7 @@
     "state": "Wisconsin",
     "median_age": 40.4,
     "obesity_rate": 37.7,
-    "cow-human_ratio": 0.58,
+    "cow_human_ratio": 0.58,
     "life_expectancy": 79.3,
     "ski_resort": 33
   },
@@ -381,7 +381,7 @@
     "state": "Wyoming",
     "median_age": 39.1,
     "obesity_rate": 34.3,
-    "cow-human_ratio": 2.15,
+    "cow_human_ratio": 2.15,
     "life_expectancy": 78.3,
     "ski_resort": 10
   }
