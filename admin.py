@@ -10,13 +10,13 @@ def firebase_setup():
     # Firebase Connection Setup
     cred, app, store = fc.fb_conn()
 
-    # Firebase Collection Setup (Scraps all old data under 'state-data')
-    doc_ref = store.collection(u'state-data')
-    store.recursive_delete(doc_ref)
-
     # Use sys.argv to get the json file, it will be arg 1 (0 is script name)
     state_json = sys.argv[1]
 
+    # Firebase Collection Setup (Scraps all old data under 'state-data')
+    doc_ref = store.collection(u'state-data')
+    store.recursive_delete(doc_ref)
+    
     # Load json file, please use state-data.json with NO QUOTES AROUND IT
     open_j = open(str(state_json))
     state_data = json.load(open_j)
