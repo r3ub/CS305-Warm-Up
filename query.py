@@ -48,7 +48,7 @@ def main():
     string = input('?? ')
     while(string.lower() != 'quit'):
         parse_string(string)
-        string = input('??')
+        string = input('?? ')
 
 main()
 
