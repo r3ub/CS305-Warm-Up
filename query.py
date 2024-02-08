@@ -30,6 +30,8 @@ store.recursive_delete(doc_ref)
 #note: trim whitespace before/after query
 def parse_string(userInput):
     if(userInput):
+        #
+        hitslist = []
         #make states dictionary
         states = create_dictionary()
         #trim trailing/leading whitespace
@@ -50,9 +52,17 @@ def parse_string(userInput):
                             value = tokenizedQuery[x][len(keyword) + len(symbol):]
                             if(symbol == ' of ' or (keyword == 'state' and symbol == ' == ')):
                                 if(value in states):
-                                    do_state_query(value)
+                                    equal_to_val(keyword, value)
                             elif(value.replace('.', '', 1).isdigit()):
-                                do_attribute_query(keyword, symbol, value)
+                                print('dog')
+
+def equal_to_val(item, value):
+    return_list = []
+    ref = store.collection(u'state-data')
+    docs = ref.where(filter=FieldFilter(item, "==", value)).stream()
+    for doc in docs:
+        return_list.append(doc.to_dict())
+    return return_list
 
 def create_dictionary():
     # Load json file
@@ -80,27 +90,8 @@ def format_dictionary(states_dict):
             print(f"  {key.replace('_', ' ').capitalize()}: {value}")
         print()
 
-def do_state_query(value):
-    states = create_dictionary()
-    for state in states:
-        if(state == value):
-            print(states.get(state))
-
-def do_attribute_query(keyword, symbol, value):
-    states = create_dictionary().items()
-    for item in states:
-        if(symbol == ' > '):
-            if(item[1].get(keyword) > float(value)):
-                print(item)
-        elif(symbol == ' < '):
-            if(item[1].get(keyword) < float(value)):
-                print(item)
-        else:
-            if(item[1].get(keyword) == float(value)):
-                print(item)
-
 def main():
-    string = "median_age > 43 and state == Alabama and obesity_rate > 40 and obesity_rate of Texas"
+    string = "median_age > 43 and obesity_rate < 80"
     parse_string(string)
     # Create the dictionary and print it to see the structure
     states_dictionary = create_dictionary()

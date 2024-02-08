@@ -7,51 +7,15 @@ from google.cloud.firestore_v1 import FieldFilter
 # Firebase Connection Setup
 cred, app, store = fc.fb_conn()
 
-
-def greater_than_val_not_inc(item, value):
+def do_query(item, symbol, value):
+    symbol = symbol.strip()
     return_list = []
     ref = store.collection(u'state-data')
-    docs = ref.where(filter=FieldFilter(item, ">", value)).stream()
+    docs = ref.where(filter=FieldFilter(item, symbol, value)).stream()
     for doc in docs:
         return_list.append(doc.to_dict())
     return return_list
 
 
-def greater_than_val_inc(item, value):
-    return_list = []
-    ref = store.collection(u'state-data')
-    docs = ref.where(filter=FieldFilter(item, ">=", value)).stream()
-    for doc in docs:
-        return_list.append(doc.to_dict())
-    return return_list
-
-
-def equal_to_val(item, value):
-    return_list = []
-    ref = store.collection(u'state-data')
-    docs = ref.where(filter=FieldFilter(item, "==", value)).stream()
-    for doc in docs:
-        return_list.append(doc.to_dict())
-    return return_list
-
-
-def less_than_val_inc(item, value):
-    return_list = []
-    ref = store.collection(u'state-data')
-    docs = ref.where(filter=FieldFilter(item, "<=", value)).stream()
-    for doc in docs:
-        return_list.append(doc.to_dict())
-    return return_list
-
-
-def less_than_val_not_inc(item, value):
-    return_list = []
-    ref = store.collection(u'state-data')
-    docs = ref.where(filter=FieldFilter(item, "<", value)).stream()
-    for doc in docs:
-        return_list.append(doc.to_dict())
-    return return_list
-
-
-dct1 = (equal_to_val(u'state', "Kentucky"))
+dct1 = (do_query(u'median_age', ' < ', 28))
 print(dct1)
