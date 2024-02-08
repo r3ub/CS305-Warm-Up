@@ -2,13 +2,10 @@
 # used https://medium.com/@cbrannen/importing-data-into-firestore-using-python-dce2d6d3cd51 as a reference
 
 import json
-import firebase_admin
-from firebase_admin import credentials, firestore
+import firebase_connection as fc
 
 # Firebase Connection Setup
-cred = credentials.Certificate("firebase-adminsdk-key.json")
-app = firebase_admin.initialize_app(cred)
-store = firestore.client()
+cred, app, store = fc.fb_conn()
 
 # Firebase Collection Setup (Scraps all old data under 'state-data')
 doc_ref = store.collection(u'state-data')
