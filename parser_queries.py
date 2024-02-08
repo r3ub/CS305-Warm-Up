@@ -17,5 +17,5 @@ def do_query(item, symbol, value):
     return return_list
 
 
-dct1 = (do_query(u'median_age', ' < ', 28))
+dct1 = (do_query('median_age', ' < ', 35))
 print(dct1)
