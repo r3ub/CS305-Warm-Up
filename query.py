@@ -30,22 +30,29 @@ store.recursive_delete(doc_ref)
 #note: trim whitespace before/after query
 def parse_string(userInput):
     if(userInput):
+        #make states dictionary
+        states = create_dictionary()
         #trim trailing/leading whitespace
         userInput = userInput.strip()
         #keywords for the start of the query
-        keywords = ['state', 'median age', 'obesity rate', 'cow-human ratio', 'life expectancy', 'ski resort']
+        keywords = ['state', 'median_age', 'obesity_rate', 'cow_human_ratio', 'life_expectancy', 'ski_resort']
         #valid query symbols
         symbols = [' > ', ' < ', ' == ', ' of ']
         valid = False
         #split on conjunction
         tokenizedQuery = userInput.split(' and ')
         #loops through each 
-        for query in tokenizedQuery:
+        for x in range(0, len(tokenizedQuery)):
             for keyword in keywords:
-                if(query.startswith(keyword)):
+                if(tokenizedQuery[x].startswith(keyword)):
                     for symbol in symbols:
-                        if(query[len(keyword):].startswith(symbol)):
-                            print('valid so far')
+                        if(tokenizedQuery[x][len(keyword):].startswith(symbol)):
+                            value = tokenizedQuery[x][len(keyword) + len(symbol):]
+                            if(symbol == ' of ' or (keyword == 'state' and symbol == ' == ')):
+                                if(value in states):
+                                    do_state_query(value)
+                            elif(value.replace('.', '', 1).isdigit()):
+                                do_attribute_query(keyword, symbol, value)
 
 def create_dictionary():
     # Load json file
@@ -73,13 +80,32 @@ def format_dictionary(states_dict):
             print(f"  {key.replace('_', ' ').capitalize()}: {value}")
         print()
 
+def do_state_query(value):
+    states = create_dictionary()
+    for state in states:
+        if(state == value):
+            print(states.get(state))
+
+def do_attribute_query(keyword, symbol, value):
+    states = create_dictionary().items()
+    for item in states:
+        if(symbol == ' > '):
+            if(item[1].get(keyword) > float(value)):
+                print(item)
+        elif(symbol == ' < '):
+            if(item[1].get(keyword) < float(value)):
+                print(item)
+        else:
+            if(item[1].get(keyword) == float(value)):
+                print(item)
+
 def main():
-    string = "median age == 5 and state == Alabama and obesity rate > 5 and obesity rate of Texas"
+    string = "median_age > 43 and state == Alabama and obesity_rate > 40 and obesity_rate of Texas"
     parse_string(string)
     # Create the dictionary and print it to see the structure
     states_dictionary = create_dictionary()
     # format and print the dictionary to make it readable
-    print(format_dictionary(states_dictionary))
+    #print(format_dictionary(states_dictionary))
 
 main()
 
