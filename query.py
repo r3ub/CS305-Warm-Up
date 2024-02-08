@@ -45,8 +45,10 @@ def do_query(item, symbol, value):
     return return_list
 
 def main():
-    string = input('??')
-    parse_string(string)
+    string = input('?? ')
+    while(string.lower() != 'quit'):
+        parse_string(string)
+        string = input('??')
 
 main()
 
