@@ -4,23 +4,6 @@ from google.cloud.firestore_v1 import FieldFilter
 # Firebase Connection Setup
 cred, app, store = fc.fb_conn()
 
-# Firebase Collection Setup (Scraps all old data under 'state-data')
-#doc_ref = store.collection(u'state-data')
-#store.recursive_delete(doc_ref)
-
-#Query Language:
-# INPUT                     RETURN  
-# state == X                all stats for state X
-# median age X              median age for state X
-# median age >/< X          all states with median age over/under X
-# obesity rate X            obesity rate for state X
-# obesity rate >/< X        all states with obesity rate over/under X 
-# cow-human ratio X         cow-human ratio for state X
-# cow-human ratio >/< X     all states with cow-human ratio over/under X
-# life expectancy X         life expectancy for state X
-# life expectancy >/< X     all states with life expectancy over/under X
-# ski resort X              T/F if a ski resort exists in state X. If true, number of ski resorts
-# functionality for and
 
 #note: trim whitespace before/after query
 def parse_string(userInput):
