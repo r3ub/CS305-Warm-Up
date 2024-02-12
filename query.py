@@ -13,27 +13,34 @@ def parse_string(userInput):
         #make states dictionary
         #states = create_dictionary()
         queries = []
+        #used to check whether invalid input msg must be printed
+        valid = False
         #trim trailing/leading whitespace
         userInput = userInput.strip()
         #keywords for the start of the query
         keywords = ['state', 'median_age', 'obesity_rate', 'cow_human_ratio', 'life_expectancy', 'ski_resort']
         #valid query symbols
         symbols = [' > ', ' < ', ' == ', ' of ']
-        valid = False
         #split on conjunction
         tokenizedQuery = userInput.split(' and ')
         #loops through each
-        for x in range(0, len(tokenizedQuery)):
-            for keyword in keywords:
-                if(tokenizedQuery[x].startswith(keyword)):
-                    for symbol in symbols:
-                        if(tokenizedQuery[x][len(keyword):].startswith(symbol)):
-                            value = tokenizedQuery[x][len(keyword) + len(symbol):]
-                            if(value.isdigit()):
-                                value = float(value)
-                            else:
-                                value = value.capitalize()
-                            queries.append((keyword, symbol.strip(), value))
+        if(userInput != 'help'):
+            for x in range(0, len(tokenizedQuery)):
+                for keyword in keywords:
+                    if(tokenizedQuery[x].startswith(keyword)):
+                        for symbol in symbols:
+                            if(tokenizedQuery[x][len(keyword):].startswith(symbol)):
+                                value = tokenizedQuery[x][len(keyword) + len(symbol):]
+                                if(value.isdigit()):
+                                    value = float(value)
+                                else:
+                                    value = value.capitalize()
+                                queries.append((keyword, symbol.strip(), value))
+                                valid = True
+        else:
+            print("Queries are made in the following manner:\n1. Enter a keyword: (state, median_age, obesity_rate, cow_human_ratio, life_expectancy, ski_resort)\n2. Enter a connecting symbol (>, <, or ==). == is used to get the stats of a single state (see example)\n3. Enter a value (either a state name or a double)\n4. Example queries: 'median_age < 40.2', 'obesity_rate > 35 and life_expectancy > 75', 'state == Vermont'")
+        if(not valid):
+            print("Invalid input. Type 'HELP' for assistance")
     return queries
 
 def do_query(item, symbol, value):
@@ -70,14 +77,17 @@ def print_query(return_list, item):
 
 def command_line_interface():
     user_input = input(
-        "Enter your query in the format: field_name operator value, and use 'and' for multiple queries: ")
-    queries = parse_string(user_input)
-    for query in queries:
-        item, symbol, value = query
-        results = do_query(item, symbol, value)
-        # Assuming print_query is intended to print results; this part might need to be adjusted based on actual requirements
-        print_query(results, item)
-
+        "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
+    while(user_input.lower() != 'quit'):
+        queries = parse_string(user_input)
+        for query in queries:
+            item, symbol, value = query
+            results = do_query(item, symbol, value)
+            # Assuming print_query is intended to print results; this part might need to be adjusted based on actual requirements
+            print_query(results, item)
+        user_input = input(
+        "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
+    
 def main():
     command_line_interface()
     # Create the dictionary and print it to see the structure
