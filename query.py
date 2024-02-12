@@ -4,7 +4,6 @@ from google.cloud.firestore_v1 import FieldFilter
 # Firebase Connection Setup
 cred, app, store = fc.fb_conn()
 
-
 #note: trim whitespace before/after query
 def parse_string(userInput):
     if(userInput):
@@ -23,7 +22,7 @@ def parse_string(userInput):
         valid = False
         #split on conjunction
         tokenizedQuery = userInput.split(' and ')
-        #loops through each 
+        #loops through each
         for x in range(0, len(tokenizedQuery)):
             for keyword in keywords:
                 if(tokenizedQuery[x].startswith(keyword)):
@@ -34,7 +33,6 @@ def parse_string(userInput):
                                 value = float(value)
                             else:
                                 value = value.capitalize()
-                            #print(do_query(keyword, symbol, value))
                             queries.append((keyword, symbol.strip(), value))
     return queries
 
@@ -48,6 +46,7 @@ def do_query(item, symbol, value):
     return return_list
 
 def print_query(return_list, item):
+    dupe = []
     for state_info in return_list:
         # First, check if 'state' key exists to avoid KeyError
         state_name = state_info.get('state', "Unknown State")
@@ -88,8 +87,3 @@ def main():
 
 
 main()
-
-    
-
-
-    
