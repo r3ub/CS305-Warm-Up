@@ -10,7 +10,6 @@ def parse_string(userInput):
         userInput = userInput.lower()
         #to account for conjunction
         hitslist = []
-        #make states dictionary
         #states = create_dictionary()
         queries = []
         #used to check whether invalid input msg must be printed
