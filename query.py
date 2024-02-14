@@ -33,7 +33,9 @@ def parse_string(userInput):
                                 if(isDigit(value)):
                                     value = float(value)
                                 else:
-                                    value = value.capitalize()
+                                    lst = [word[0].upper() + word[1:] for word in value.split()]
+                                    value = " ".join(lst)
+                                    print(value)
                                 queries.append((keyword, symbol.strip(), value))
                                 valid = True
         else:
