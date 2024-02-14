@@ -31,7 +31,8 @@ def parse_string(userInput):
                                 if(isDigit(value)):
                                     value = float(value)
                                 else:
-                                    value = value.capitalize()
+                                    lst = [word[0].upper() + word[1:] for word in value.split()]
+                                    value = " ".join(lst)
                                 queries.append((keyword, symbol.strip(), value))
                                 valid = True
         else:
@@ -54,6 +55,7 @@ def print_query(return_list, item_list):
         # First, check if 'state' key exists to avoid KeyError
         state_name = state_info.get('state', "Unknown State")
         # Handle printing based on the item being queried
+        state_list = []
         for item in item_list:
             if item == 'state':
                 if 'state' in state_info:
@@ -65,15 +67,20 @@ def print_query(return_list, item_list):
                     if key != 'state':  # Skip printing the state name again
                         print(f"{key.capitalize()}: {value}")
             else:
+                len_items = len(item_list)
                 # For other items, print state and the item's value
                 # Use .get() to safely access item value and provide a default if not found
-                item_value = state_info.get(item, "Not available")
-                print(f"State: {state_name}, {item}: {item_value}")
-
+                if (state_name not in state_list):
+                    print(f"State: {state_name}, ", end='')
+                    for item in item_list:
+                        item_value = state_info.get(item, "Not available")
+                        print(f"{item}: {item_value}   ", end='')
+                    print("")
+                    state_list.append(state_name)
 
 def command_line_interface():
     user_input = input(
-        "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
+        "\nEnter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
     numAnds = getAndCount(user_input)
     while(user_input.lower() != 'quit'):
         queries = parse_string(user_input)
@@ -87,7 +94,7 @@ def command_line_interface():
             for entry in results:
                 big_list.append(entry)
         for entry in big_list:
-            if(big_list.count(entry) == numAnds):
+            if((big_list.count(entry) == numAnds) and (entry not in final_list)):
                 final_list.append(entry)
         # Assuming print_query is intended to print results; this part might need to be adjusted based on actual requirements
         print_query(final_list, item_list)
