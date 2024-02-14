@@ -4,7 +4,7 @@ from google.cloud.firestore_v1 import FieldFilter
 # Firebase Connection Setup
 cred, app, store = fc.fb_conn()
 
-#note: trim whitespace before/after query
+#parse_string takes a string of user input and returns a list of queries and keywords based on that input
 def parse_string(userInput):
     if(userInput):
         userInput = userInput.lower()
@@ -36,12 +36,15 @@ def parse_string(userInput):
                                 queries.append((keyword, symbol.strip(), value))
                                 valid = True
         else:
-            print("Queries are made in the following manner:\n1. Enter a keyword: (state, median_age, obesity_rate, cow_human_ratio, life_expectancy, ski_resort)\n2. Enter a connecting symbol (>, <, or ==). == is used to get the stats of a single state (see example)\n3. Enter a value (either a state name or a double)\n4. Example queries: 'median_age < 40.2', 'obesity_rate > 35 and life_expectancy > 75', 'state == Vermont'")
+            print("Queries are made in the following manner:\n1. Enter a keyword: (state, median_age, obesity_rate, cow_human_ratio, life_expectancy, ski_resort)\n2. Enter a connecting symbol (>, <, or ==). == is used to get the stats of a single state (see example)\n3. Enter a value (either a state name or a double)\n4. Example queries: 'median_age < 40.2', 'obesity_rate > 35 and life_expectancy > 75', 'state == Vermont'\n5. Type 'quit' to quit")
+            valid = True
         if(not valid):
             print("Invalid input. Type 'HELP' for assistance")
     return queries
 
-def do_query(item, symbol, value, numAnds):
+#do_query takes an item, symbol, and value and returns a list of dictionary entries that match the 
+#passed arguments (i.e. that fit the criteria of the query)
+def do_query(item, symbol, value):
     symbol = symbol.strip()
     return_list = []
     ref = store.collection(u'state-data')
@@ -50,6 +53,7 @@ def do_query(item, symbol, value, numAnds):
         return_list.append(doc.to_dict())
     return return_list
 
+#print_query formats and prints the entries that match the query of the user
 def print_query(return_list, item_list):
     for state_info in return_list:
         # First, check if 'state' key exists to avoid KeyError
@@ -78,10 +82,12 @@ def print_query(return_list, item_list):
                     print("")
                     state_list.append(state_name)
 
+#command_line_interface allows the user to interface with the program with Terminal or another CLI
 def command_line_interface():
     user_input = input(
         "\nEnter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
     numAnds = getAndCount(user_input)
+    #loops through userInput entries and prints output as long as they do not type quit
     while(user_input.lower() != 'quit'):
         queries = parse_string(user_input)
         big_list = []
@@ -89,7 +95,7 @@ def command_line_interface():
         item_list = []
         for query in queries:
             item, symbol, value = query
-            results = do_query(item, symbol, value, numAnds)
+            results = do_query(item, symbol, value)
             item_list.append(item)
             for entry in results:
                 big_list.append(entry)
@@ -109,7 +115,7 @@ def isDigit(x):
     except ValueError:
         return False
 
-
+#counts number of ands and returns that value + 1 (really, it counts the number of queries)
 def getAndCount(list_to_split):
     splitList = list_to_split.split(' and ')
     print(len(splitList))
@@ -117,10 +123,5 @@ def getAndCount(list_to_split):
 
 def main():
     command_line_interface()
-    # Create the dictionary and print it to see the structure
-    #states_dictionary = create_dictionary()
-    # format and print the dictionary to make it readable
-    #print(format_dictionary(states_dictionary))
-
 
 main()
