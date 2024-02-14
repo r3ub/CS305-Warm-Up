@@ -31,7 +31,7 @@ def parse_string(userInput):
                         for symbol in symbols:
                             if(tokenizedQuery[x][len(keyword):].startswith(symbol)):
                                 value = tokenizedQuery[x][len(keyword) + len(symbol):]
-                                if(value.isdigit()):
+                                if(isDigit(value)):
                                     value = float(value)
                                 else:
                                     value = value.capitalize()
@@ -87,7 +87,16 @@ def command_line_interface():
             print_query(results, item)
         user_input = input(
         "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
-    
+
+
+def isDigit(x):
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
+
 def main():
     command_line_interface()
     # Create the dictionary and print it to see the structure
