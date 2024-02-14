@@ -118,7 +118,6 @@ def isDigit(x):
 #counts number of ands and returns that value + 1 (really, it counts the number of queries)
 def getAndCount(list_to_split):
     splitList = list_to_split.split(' and ')
-    print(len(splitList))
     return len(splitList)
 
 def main():
