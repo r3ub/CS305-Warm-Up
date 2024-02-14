@@ -8,8 +8,6 @@ cred, app, store = fc.fb_conn()
 def parse_string(userInput):
     if(userInput):
         userInput = userInput.lower()
-        #to account for conjunction
-        hitslist = []
         #states = create_dictionary()
         queries = []
         #used to check whether invalid input msg must be printed
@@ -42,7 +40,7 @@ def parse_string(userInput):
             print("Invalid input. Type 'HELP' for assistance")
     return queries
 
-def do_query(item, symbol, value):
+def do_query(item, symbol, value, numAnds):
     symbol = symbol.strip()
     return_list = []
     ref = store.collection(u'state-data')
@@ -51,39 +49,48 @@ def do_query(item, symbol, value):
         return_list.append(doc.to_dict())
     return return_list
 
-def print_query(return_list, item):
-    dupe = []
+def print_query(return_list, item_list):
     for state_info in return_list:
         # First, check if 'state' key exists to avoid KeyError
         state_name = state_info.get('state', "Unknown State")
-
         # Handle printing based on the item being queried
-        if item == 'state':
-            if 'state' in state_info:
-                print(f"State: {state_info['state']}")
-            # Print all key-value pairs except the 'state' to avoid repetition
-            for key, value in state_info.items():
-                if key == 'state':
-                    print("State:", key)
-                if key != 'state':  # Skip printing the state name again
-                    print(f"{key.capitalize()}: {value}")
-        else:
-            # For other items, print state and the item's value
-            # Use .get() to safely access item value and provide a default if not found
-            item_value = state_info.get(item, "Not available")
-            print(f"State: {state_name}, {item}: {item_value}")
+        for item in item_list:
+            if item == 'state':
+                if 'state' in state_info:
+                    print(f"State: {state_info['state']}")
+                # Print all key-value pairs except the 'state' to avoid repetition
+                for key, value in state_info.items():
+                    if key == 'state':
+                        print("State:", key)
+                    if key != 'state':  # Skip printing the state name again
+                        print(f"{key.capitalize()}: {value}")
+            else:
+                # For other items, print state and the item's value
+                # Use .get() to safely access item value and provide a default if not found
+                item_value = state_info.get(item, "Not available")
+                print(f"State: {state_name}, {item}: {item_value}")
 
 
 def command_line_interface():
     user_input = input(
         "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
+    numAnds = getAndCount(user_input)
     while(user_input.lower() != 'quit'):
         queries = parse_string(user_input)
+        big_list = []
+        final_list = []
+        item_list = []
         for query in queries:
             item, symbol, value = query
-            results = do_query(item, symbol, value)
-            # Assuming print_query is intended to print results; this part might need to be adjusted based on actual requirements
-            print_query(results, item)
+            results = do_query(item, symbol, value, numAnds)
+            item_list.append(item)
+            for entry in results:
+                big_list.append(entry)
+        for entry in big_list:
+            if(big_list.count(entry) == numAnds):
+                final_list.append(entry)
+        # Assuming print_query is intended to print results; this part might need to be adjusted based on actual requirements
+        print_query(final_list, item_list)
         user_input = input(
         "Enter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
 
@@ -95,6 +102,11 @@ def isDigit(x):
     except ValueError:
         return False
 
+
+def getAndCount(list_to_split):
+    splitList = list_to_split.split(' and ')
+    print(len(splitList))
+    return len(splitList)
 
 def main():
     command_line_interface()
