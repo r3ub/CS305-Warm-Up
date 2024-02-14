@@ -33,6 +33,7 @@ def parse_string(userInput):
                             if (value.isdigit()):
                                 value = float(value)
                             else:
+                                #Splits the states with 2 words, capitalizes them both, then joins them back together
                                 lst = [word[0].upper() + word[1:] for word in value.split()]
                                 value = " ".join(lst)
                             queries.append((keyword, symbol.strip(), value))
