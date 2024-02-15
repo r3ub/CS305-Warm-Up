@@ -86,9 +86,9 @@ def print_query(return_list, item_list):
 def command_line_interface():
     user_input = input(
         "\nEnter your query in the format: field_name operator value. Use 'and' for multiple queries. Type 'HELP' for assistance.: ")
-    numAnds = getAndCount(user_input)
     #loops through userInput entries and prints output as long as they do not type quit
     while(user_input.lower() != 'quit'):
+        numAnds = getAndCount(user_input)
         queries = parse_string(user_input)
         big_list = []
         final_list = []
